@@ -32,7 +32,8 @@ app.post("/", function(req, res){
             const icon = weatherData.weather[0].icon
             const imageURL = "https://openweathermap.org/img/wn/" + icon + "@2x.png"
             console.log(temp +" "+ desc +" "+ icon + tempertaure);
-            res.write("<h1>The tempertaure in " + query + " is " + tempertaure + " degrees celcius</h1>");// 'res.write' can be used to write whatever you feel like displaying in the local host then you use 'res.send()- you can use the write command without this' to send to the local host whatever was written
+            res.header('Content-Type', 'text/html; charset=utf-8')
+            res.write("<h1>The tempertaure in " + query + " is " + tempertaure + `° C` + "</h1>");// 'res.write' can be used to write whatever you feel like displaying in the local host then you use 'res.send()- you can use the write command without this' to send to the local host whatever was written
             res.write("<p>The weather currently has " + desc + "</p>");
             res.write("<img src=" + imageURL +">")
             res.send()
